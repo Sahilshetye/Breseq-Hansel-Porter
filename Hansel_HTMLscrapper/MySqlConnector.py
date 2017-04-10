@@ -1,8 +1,9 @@
 import mysql.connector
 
 def getMySQLconnection():
+    # This is the local DB on my PC. Dont get any funny ideas regarding it.
     cnx = mysql.connector.connect(user='sahilshetye', password='sahilshetye',
-                                  host='10.10.32.131',
+                                  host='',
                                   database='info_dev', )
     return cnx
 

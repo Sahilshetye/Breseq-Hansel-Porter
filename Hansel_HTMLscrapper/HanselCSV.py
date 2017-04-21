@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 
 class HanselMutation:
-    Fileid =1 # typecasting to integer
-    EvTypeID=1 # 'RA' and typecasting to integer'
-    EvUrl="/index.html" # Typecasting to string and
-    SeqId="LTMG3" #'Typecasting and defaulting'
-    Pos= 1 # Typecasting
-    MtypeID=1 # Typecasting
-    MObj= "A" #Typecasting
-    MSub= "G"
-    Mutation= "Test"
-    Coverage= "Percent"
+    Fileid =0 # typecasting to integer
+    EvTypeID=0 # 'RA' and typecasting to integer'
+    EvUrl1="" # Typecasting to string and
+    EvUrl2="" # Typecasting to string and
+    SeqId="" #'Typecasting and defaulting'
+    Pos= 0 # Typecasting
+    MtypeID=0 # Typecasting
+    MObj= "" #Typecasting
+    MSub= ""
+    Mutation= ""
+    Coverage= ""
     AnnotationTypeID= 0
     Annotation=""
     GeneType=1

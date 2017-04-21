@@ -6,7 +6,7 @@ import operator
 def pathprocessorvcf(path):
     if os.path.isfile(path + '.gz') and os.path.isfile(path + '.gz.tbi'):
         if os.path.isfile(path):
-            # log ths to log path
+             #log ths to log path
             print "found path at " + path + " and processing the the details"
         else:
             # log error
@@ -14,7 +14,8 @@ def pathprocessorvcf(path):
             # skip the creation
             # subprocess.call(['touch',path+'.testsahil.log'])
     else:
-        subprocess.call(['cp', path + '.bck', path])
+
+        subprocess.call(['cp', path , path+ '.bck'])
         command = subprocess.call(['bgzip', path])
         command = subprocess.call(['tabix', '-p', 'vcf', path + '.gz'])
         subprocess.call(['cp',path + '.bck',path])
@@ -32,16 +33,21 @@ def pathprocessorvcf(path):
 
 
 def getREF(dir,posi,seqid):
-    file = pathprocessorvcf(dir+'/data/output.vcf')
-    records = vcf.Reader(open(file))
-    for ds in records.fetch(seqid, posi-1, posi):
-        return str(ds.REF)
+    try:
+        file = pathprocessorvcf(dir+'/data/output.vcf')
+        records = vcf.Reader(open(file))
+        for ds in records.fetch(seqid, posi-1, posi):
+            return str(ds.REF)
+    except Exception:
+        return "VCFReader error" #This is mostly because It will because of ValueError: could not create iterator for region 'loxedcatP:1-1'
 
+def getALT(dir,posi=None,seqid='LTMG3'):
+    try:
+        file = pathprocessorvcf(dir+'/data/output.vcf')
+        records = vcf.Reader(open(file))
+        for ds in records.fetch(seqid,posi-1,posi):
+            return str(reduce(operator.add, ds.ALT))
+    except Exception:
+        raise ValueError("VCFReader error: This is mostly because It will because of ValueError: could not create iterator for region e.g.'loxedcatP:1-1'")  #
 
-def getALT(dir,posi,seqid):
-    file = pathprocessorvcf(dir+'/data/output.vcf')
-    records = vcf.Reader(open(file))
-    for ds in records.fetch(seqid, posi-1, posi):
-        return str(reduce(operator.add,ds.ALT))
-
-print(type(getALT('/data1/Test folder/',306073,'LTMG3')))
+#print((getALT('/data1/Test folder/',1,"loxed-catP")))

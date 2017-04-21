@@ -3,7 +3,8 @@
 import re
 import MySqlConnector as mc
 
-def getEvidenceDetailsfromSoup(s,a):
+def getEvidenceDetailsfromSoup(s,a="Nothing Passed",b="Nothing Passed"):
+
     type=mc.getEvidenceTypeID(s)
     if type==0:
         return 0

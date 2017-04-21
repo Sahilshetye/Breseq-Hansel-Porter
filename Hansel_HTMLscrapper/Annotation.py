@@ -34,5 +34,6 @@ def getAnnotationType(s):
     else:
         query="fault"   ####Throw error here
 
-    type= ms.getAnnotationType("Fault")
 
+    type= ms.getAnnotationType(query)
+    return type

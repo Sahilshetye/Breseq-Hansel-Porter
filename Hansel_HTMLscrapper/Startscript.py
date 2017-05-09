@@ -16,14 +16,18 @@ import HanselCSV as hm
 import VCFReader as vr
 
 
-# file= input("Enter the path for index.html:")
-# sauce= open(file,'r')
+file= str(raw_input("Enter the path for Directory : "))
 #/data1/Test folder/
 #/data1/Test folder/S215658-Kahutis-1-1-11-3/
-sauce= open('/data1/Test folder/S215658-Kahutis-1-1-11-3/output/index.html','r')
-soup = bs.BeautifulSoup(sauce,'lxml')
-directory='/data1/Test folder/S215658-Kahutis-1-1-11-3'
+# directory='/data1/Test folder/S215658-Kahutis-1-1-11-3'
+# sauce= open('/data1/Test folder/S215658-Kahutis-1-1-11-3/output/index.html','r')
 
+directory=file
+sauce= open(file+"/output/index.html",'r')
+
+soup = bs.BeautifulSoup(sauce,'lxml')
+
+name= str(raw_input("Enter the Name for the file : "))
 
 
 
@@ -36,10 +40,11 @@ soup= bs.BeautifulSoup(str(tabl),'lxml')
 
 tabl1 = soup.find_all('tr')
 
+tabl
 
 otp="EvtypeidFk,Evurl1,Evurl2,Ltname,Pos,MuttypeidFk,Mobj,Msub,Mutation,Coverage,AnnotationtypeidFk,Annotationcodon1,Annotationcodon2,Annotationposition," \
     "Annotationbracket1,Annotationbracket2,Annotation,Geneparameter1,Geneparameter2,Gene,Description\n"
-
+count=0
 delimiter=","
 for tabs in tabl1:
     m = hm.HanselMutation()
@@ -47,7 +52,7 @@ for tabs in tabl1:
     trs = bs.BeautifulSoup(str(tabs), 'lxml')
     rows=trs.find_all('td')
     #print((rows))
-    if rows.__len__()!=0:
+    if rows.__len__()!=0 and count <500:
         #This one extract desription
         soup = bs.BeautifulSoup(str(rows.pop()), 'lxml')
 
@@ -198,7 +203,7 @@ for tabs in tabl1:
         otp +=m.Description+u"\n"
         #= mut.getMutationTypeDetailsfromSoup(soup.a['href'])
         #print m.MSub,m.MtypeID
-    count=0
+    count+=1
     '''
     for row in rows:
 
@@ -217,9 +222,9 @@ for tabs in tabl1:
 
 
 #temp=otp.encode('utf8')
-c = open("MYFILE.csv", "w")
-print(otp.encode("utf8"))
+c = open(directory+"/"+name+".csv", "w")
+print(otp.encode("utf8").replace('Â','').replace('â',''))
 
 
-c.write((otp).replace(u'\u2011',u' ').encode("utf8"))
+c.write((otp).replace(u'\u2011',u' ').encode("utf8").replace('Â','').replace('â',''))
 c.close()

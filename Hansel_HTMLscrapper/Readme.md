@@ -1,4 +1,4 @@
-#Breseq extractor#
+#Breseq extractor
 
 ----------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ this is a simple data extractor for breseq built using
 ----------------------------------------------------------------------
  Further Improvement:
 
- -[] Ading Unit test
- -[] Adding ability to export data in CSV
- -[] Extending Soup to  out output.html in breseq (Currently only supports  index.html )
- -[] Improving the logging of the file
+ - [ ] Ading Unit test
+ - [ ] Adding ability to export data in CSV
+ - [ ] Extending Soup to  out output.html in breseq (Currently only supports  index.html )
+ - [ ] Improving the logging of the file

@@ -8,5 +8,6 @@ setup(
     license='Apache',
     author='sahilshetye',
     author_email='sahildevilster@gmail.com',
-    description='Breseq Extractor for  extracting data from HTML output file generated in Breseq'
+    description='Breseq Extractor for  extracting data from HTML output file generated in Breseq',
+    install_requires=['beautifulsoup4','lxml','Cython','PyVCF','genomediff','mysql-connector-python-rf','samtools-tool','setuptools','protobuf','pysam']
 )

@@ -14,20 +14,33 @@ import Evidence as ev
 import sys
 import HanselCSV as hm
 import VCFReader as vr
+import sys, getopt
 
-
-file= str(raw_input("Enter the path for Directory : "))
+# file= str(raw_input("Enter the path for Directory : "))
 #/data1/Test folder/
 #/data1/Test folder/S215658-Kahutis-1-1-11-3/
 # directory='/data1/Test folder/S215658-Kahutis-1-1-11-3'
 # sauce= open('/data1/Test folder/S215658-Kahutis-1-1-11-3/output/index.html','r')
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "hi:o:", ["ifile=", "ofile="])
+except getopt.GetoptError:
+    print ('Indexscript.py -i <index.html file path> -o <output file name>')
+    sys.exit(2)
+for opt, arg in opts:
+    if opt == '-h':
+        print ('Indexscript.py -i <index.html file path> -o <output file name>')
+        sys.exit()
+    elif opt in ("-i", "--ifile"):
+        file = str(arg)
+    elif opt in ("-o", "--ofile"):
+        output_file = arg
 
 directory=file
 sauce= open(file+"/output/index.html",'r')
 
 soup = bs.BeautifulSoup(sauce,'lxml')
 
-name= str(raw_input("Enter the Name for the file : "))
+name="Hansel"
 
 
 
@@ -40,7 +53,6 @@ soup= bs.BeautifulSoup(str(tabl),'lxml')
 
 tabl1 = soup.find_all('tr')
 
-tabl
 
 otp="EvtypeidFk,Evurl1,Evurl2,Ltname,Pos,MuttypeidFk,Mobj,Msub,Mutation,Coverage,AnnotationtypeidFk,Annotationcodon1,Annotationcodon2,Annotationposition," \
     "Annotationbracket1,Annotationbracket2,Annotation,Geneparameter1,Geneparameter2,Gene,Description\n"
@@ -51,13 +63,14 @@ for tabs in tabl1:
     #print(tabs)
     trs = bs.BeautifulSoup(str(tabs), 'lxml')
     rows=trs.find_all('td')
+    collen= rows.__len__()
     #print((rows))
     if rows.__len__()!=0 and count <500:
         #This one extract desription
         soup = bs.BeautifulSoup(str(rows.pop()), 'lxml')
 
 
-        m.Description= de.getDescriptionDetailsfromSoup(soup.text)
+        m.Description= de.getDescriptionDetailsfromSoup(soup.text).replace(',',';')
        # print(description)
 
 ####################################################################################################
@@ -84,7 +97,7 @@ for tabs in tabl1:
         soup = bs.BeautifulSoup(str(rows.pop()), 'lxml')
         s1=soup.text.replace(u"Â","").replace(u"â","")
         m.AnnotationTypeID=ann.getAnnotationType(soup.text.replace(u"Â",""))
-        #print m.AnnotationTypeID
+        print m.AnnotationTypeID, s1
         m.Annotation= soup.text    # Lets see if needed or not
         if m.AnnotationTypeID==1:
            m.AnnotationCodon1=""
@@ -113,17 +126,19 @@ for tabs in tabl1:
 
 ########################################################################################################################
 
-
-        #This one extract freq
-        soup = bs.BeautifulSoup(unicode(rows.pop()), 'lxml')
-        m.Coverage = fre.getFrequencyDetailsfromSoup(soup.text)
-        #print(freq)
-
+        if(collen==8):
+            #This one extract freq
+            soup = bs.BeautifulSoup(unicode(rows.pop()), 'lxml')
+            m.Coverage = fre.getFrequencyDetailsfromSoup(soup.text)
+            #print(freq)
+        else:
+            m.Coverage=100
 ########################################################################################################################
 
         #This one extract mutation(Only TEXT)
         soup = bs.BeautifulSoup(unicode(rows.pop()), 'lxml')
-        m.Mutation=soup.text
+        m.Mutation=soup.text.replace(',','')
+        print m.Mutation
         #print unicode(rows.pop())
 
 ########################################################################################################################
@@ -203,7 +218,7 @@ for tabs in tabl1:
         otp +=m.Description+u"\n"
         #= mut.getMutationTypeDetailsfromSoup(soup.a['href'])
         #print m.MSub,m.MtypeID
-    count+=1
+        count+=1
     '''
     for row in rows:
 

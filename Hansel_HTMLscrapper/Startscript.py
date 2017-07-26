@@ -15,6 +15,7 @@ import sys
 import HanselCSV as hm
 import VCFReader as vr
 import sys, getopt
+import subprocess
 
 # file= str(raw_input("Enter the path for Directory : "))
 #/data1/Test folder/
@@ -33,7 +34,7 @@ for opt, arg in opts:
     elif opt in ("-i", "--ifile"):
         file = str(arg)
     elif opt in ("-o", "--ofile"):
-        output_file = arg
+        foldername = str(arg)
 
 directory=file
 sauce= open(file+"/output/index.html",'r')
@@ -243,3 +244,12 @@ print(otp.encode("utf8").replace('Â','').replace('â',''))
 
 c.write((otp).replace(u'\u2011',u' ').encode("utf8").replace('Â','').replace('â',''))
 c.close()
+print" Starting the Form extractation script"
+cmd= 'python2.7 /data1/PycharmProjects/Hansel_extractor/Hansel_HTMLscrapper/Formextractor.py -i '+file
+
+p= subprocess.Popen(cmd,stdout=subprocess.PIPE, shell= True)
+out, error= p.communicate()
+print out
+
+
+

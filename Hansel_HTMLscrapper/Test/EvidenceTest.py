@@ -1,12 +1,12 @@
 import unittest
-import Evidence as Ev
+import Hansel_HTMLscrapper.Evidence as Ev
 
 class EvidenceTestCase(unittest.TestCase):
     def test_EvidenceType(self):
         self.assertNotEqual(str,type(Ev.getEvidenceDetailsfromSoup("RA","Not important")))
 
     def test_Evidence1(self):
-        self.assertEqual(1, Ev.getEvidenceDetailsfromSoup("RA","Not important"))
+        self.assertEqual(2, Ev.getEvidenceDetailsfromSoup("RA","Not important"))
 
     def test_Evidence2(self):
         self.assertEqual(0, Ev.getEvidenceDetailsfromSoup("RAR","Not important"))

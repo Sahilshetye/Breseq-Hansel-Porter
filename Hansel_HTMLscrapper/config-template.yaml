@@ -1,0 +1,9 @@
+server: "mssqlserverename"
+user: "mssqluser"
+password: "mssqlpassword"
+mysqlserver: "mysqlserver"
+mysqluser : "mysqluser"
+mysqlpassword : "mysqlpassword"
+mysqldb : "mysqldb"
+
+# change the name to config.yaml for production deployment

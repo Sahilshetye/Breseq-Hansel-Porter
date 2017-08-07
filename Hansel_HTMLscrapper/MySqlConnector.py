@@ -1,9 +1,25 @@
 import mysql.connector
+import yaml
+import os
+
+# file=open("config.yaml",'r')
+with open(os.path.dirname(__file__)+"/config.yaml",'r') as stream:
+    try:
+        # pyaml.load(stream))
+        data=yaml.load(stream)
+        # print(dat['password'])
+    except yaml.YAMLError as exc:
+        print(exc)
+
+
+
+
 
 def getMySQLconnection():
     # This is the local DB on my PC. Dont get any funny ideas regarding it.
-    cnx = mysql.connector.connect(user='sahilshetye', password='sahilshetye',
-                                  host='10.10.56.12',                                  database='info-dev', )
+    cnx = mysql.connector.connect(user=data['mysqluser'], password=data['mysqlpassword'],
+                                  host=data['mysqlserver'], database=data['mysqldb'], )
+
     return cnx
 
 def getAnnotationType(s):
@@ -57,3 +73,4 @@ def getMutationTypeID(s):
     except Exception:
         return 0
 
+# print getMutationTypeID('SNP')

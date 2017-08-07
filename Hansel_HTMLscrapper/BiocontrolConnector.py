@@ -1,8 +1,9 @@
 import pymssql
 import yaml
+import os
 
 # Loading the config file which has the  parameter list in it
-file=open("config.yaml",'r')
+file=open(os.path.dirname(__file__)+"/config.yaml",'r')
 with open("config.yaml",'r') as stream:
     try:
         # pyaml.load(stream))

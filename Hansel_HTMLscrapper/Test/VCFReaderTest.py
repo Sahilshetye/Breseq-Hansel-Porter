@@ -1,5 +1,5 @@
 import unittest
-import VCFReader as vc
+import Hansel_HTMLscrapper.VCFReader as vc
 
 class VCReaderTest(unittest.TestCase):
     def test_VCFReader_REF(self):

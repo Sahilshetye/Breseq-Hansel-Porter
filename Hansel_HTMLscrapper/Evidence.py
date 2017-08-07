@@ -12,4 +12,5 @@ def getEvidenceDetailsfromSoup(s,a="Nothing Passed",b="Nothing Passed"):
         return type
 
 
-#print type(getEvidenceDetailsfromSoup("RA","Not imp"))
+# print type(getEvidenceDetailsfromSoup("RAR","Not imp"))
+# print (getEvidenceDetailsfromSoup("RAR","Not imp"))

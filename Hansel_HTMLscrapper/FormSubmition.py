@@ -32,8 +32,8 @@ def postFileFunction(url, datafile,runmeta):
                                 ,'tabletest_bundle_api_upload_type[RunMeta][runfrom][day]' : str(f.SampledOn.day)
                                 ,'tabletest_bundle_api_upload_type[RunMeta][cust]' : f.Customer
                                 ,'tabletest_bundle_api_upload_type[RunMeta][corpobj]' : f.CorpObj
-                                , 'tabletest_bundle_api_upload_type[RunMeta][createdby]': f.CreatedBy
-                                , 'tabletest_bundle_api_upload_type[RunMeta][labbook]': f.Labbook
+                                ,'tabletest_bundle_api_upload_type[RunMeta][createdby]': f.CreatedBy
+                                ,'tabletest_bundle_api_upload_type[RunMeta][labbook]': f.Labbook
                                 ,'tabletest_bundle_api_upload_type[RunMeta][task]' : f.Task
                                 ,'tabletest_bundle_api_upload_type[RunMeta][milestone]' : f.Milestone
                                 ,'tabletest_bundle_api_upload_type[RunMeta][experiment]' : f.Experiment

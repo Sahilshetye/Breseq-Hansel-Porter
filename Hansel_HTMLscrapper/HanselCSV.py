@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+
+#  Entire Class is being Type casted  for the  type Safety in a way.
 class HanselMutation:
     Fileid =0 # typecasting to integer
     EvTypeID=0 # 'RA' and typecasting to integer'

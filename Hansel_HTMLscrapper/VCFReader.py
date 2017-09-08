@@ -7,7 +7,7 @@ def pathprocessorvcf(path):
     if os.path.isfile(path + '.gz') and os.path.isfile(path + '.gz.tbi'):
         if os.path.isfile(path):
              #log ths to log path
-            print "found path at " + path + " and processing the the details"
+            # print "found path at " + path + " and processing the the details"
         else:
             # log error
             print "error"

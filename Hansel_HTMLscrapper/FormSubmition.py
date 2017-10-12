@@ -41,7 +41,7 @@ def postFileFunction(url, datafile,runmeta):
 
                         })
 
-
+    # exit()
     r = requests.post(url,data=formsubmit,headers={'Content-Type' : formsubmit.content_type})
     # print(r.status_code)
     # print r.json()[u'data']
@@ -55,6 +55,7 @@ def postFileFunction(url, datafile,runmeta):
 
 
 def postEvidenceFileFunction(url, datafile,f):
+    # exit()
     for filename in os.listdir(datafile+"/output/evidence"):
         # print filename, url
         formsubmit=MultipartEncoder({'tabletest_bundle_api_evidence_file_type[evidenceFileUpload]': (filename,open(datafile+"/output/evidence/"+filename,'r'),'application/octet-stream')})

@@ -1,4 +1,4 @@
-
+import datetime as dt
 
 class Runmeta:
     FileName=""
@@ -12,8 +12,8 @@ class Runmeta:
     Day=""
     RunId=""
     RunDescription=""
-    SampledOn=""
-    InnoculatedFrom=""
+    SampledOn=dt.datetime.today
+    InnoculatedFrom=dt.datetime.today
     Customer=""
     CorpObj=""
     Task=""

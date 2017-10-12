@@ -20,10 +20,14 @@ this is a simple data extractor for breseq built using
 ----------------------------------------------------------------------
  Further Improvement:
 
- - [ ] Ading Unit test
+ - [x] Ading Unit test
  - [x] Adding ability to export data in CSV
  - [x] Extending Soup to  out output.html in breseq (Currently only supports  index.html )
  - [ ] Improving the logging of the file
  - [x]  Improve the structure 
- - [ ] Setting up distribution
+ - [x] ~~Setting up distribution~~
+ - [x]  Adding  new ways to upload data(PArtial)
+ - [ ]  Adding a way to load the  Stock data in  Lanzatech.
+ - [x] Setting up Offsite samples into Hansel
+ 
  
